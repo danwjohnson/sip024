@@ -97,7 +97,7 @@ public abstract class AbstractHbnDao<T extends Object>
 	public List<T> getAll() {
 		
 		return getSession()
-				.createQuery("from" + getDomainClassName())
+				.createQuery("from " + getDomainClassName())
 				.list();
 		
 	} // end getAll()
@@ -124,10 +124,11 @@ public abstract class AbstractHbnDao<T extends Object>
 	} // end deleteById()
 	
 	
+	// TODO look at this.
 	public void deleteAll() {
 		
 		getSession()
-			.createQuery("select count(*) from " + getDomainClassName())
+			.createQuery("delete " + getDomainClassName())
 			.uniqueResult();
 		
 	} // end deleteAll()
